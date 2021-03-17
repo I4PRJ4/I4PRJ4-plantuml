@@ -1,0 +1,35 @@
+@startuml
+Left to right direction
+skinparam actorStyle awesome
+
+
+frame "uc Studietips" {
+actor Studerende
+
+database "Database" as db
+
+Rectangle Studietips {
+    usecase "UC1: Tilføj Tip" as US1
+    usecase "UC2: Læs Tip" as US2
+    usecase "UC3: Søg Tip" as US3
+    usecase "UC4: Godkend/Afvis Tip" as US4
+    usecase "UC5: Fjern Tip" as US5
+}
+
+US1 -[hidden]left- US2
+US2 -[hidden]left- US3
+US4 -[hidden]left- US5
+
+Studerende --> US1
+Studerende --> US2
+Studerende --> US3
+Moderator --> US4
+Moderator --> US5
+
+US1 --> db
+US2 --> db
+US3 --> db
+US4 --> db
+US5 --> db
+} 
+@enduml
