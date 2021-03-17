@@ -1,0 +1,25 @@
+@startuml Basic Sample
+!include https://raw.githubusercontent.com/plantuml-stdlib/C4-PlantUML/master/C4_Container.puml
+
+Person(User, "Studerende")
+Person(Moderator, "Moderator")
+
+System_Boundary(c1, "StudieTips") {
+
+    Container(web_app, "Web Application", "JavaScript, VueJS", "Allows users to browse and add tips")
+    
+    Container(API, "Back-End", "C#, ASP.NET Core 2.1 MVC", "Allows Web-Application")
+    
+
+}
+
+
+ContainerDb_Ext(Database, "Database","Stores Tips and User information")
+
+Rel(User, web_app, "Uses", "HTTPS")
+Rel(Moderator, web_app, "Uses", "HTTPS")
+Rel(web_app, API, "Uses", "REST")
+Rel(API, web_app, "Uses", "REST")
+Rel(API, Database, "Uses", "MSSQL")
+Rel_U(Database, API, "Uses", "MSSQL")
+@enduml
