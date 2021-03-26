@@ -12,9 +12,9 @@ System_Boundary(c1, "StudieTips") {
 
     Container(API, "Back-End API", "Container: C#, ASP.NET Core 5 MVC", "Allows Web-Application to interface with database")
     
-    ContainerDb(Database, "Database","Container: MS SQL Server","Stores Tips and User information")
-
+    
 }
+ContainerDb_Ext(Database, "Database","Container: MS SQL Server","Stores Tips and User information")
 
 Moderator -[hidden]left- web_app
 
@@ -22,7 +22,7 @@ Rel(User, web_app, "Uses", "HTTPS")
 Rel(Moderator, web_app, "Uses", "HTTPS")
 Rel(API, web_app, "Returns", "HTTPS/JSON")
 Rel(web_app, API, "Makes API calls to", "HTTPS/JSON")
-Rel(API, Database, "Queries for data", "MSSQL")
-Rel_U(Database, API, "Returns", "MSSQL")
+Rel(Database, API, "Queries for data", "MSSQL")
+Rel_U(API, Database, "Returns", "MSSQL")
 
 @enduml
