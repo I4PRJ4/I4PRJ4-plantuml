@@ -1,0 +1,17 @@
+@startuml System Context Diagram
+!include <C4/C4_Container>
+
+Person(mod, "Moderator", "Administrerer/filtrerer indkomne tips fra studerende")
+Person(student, "Studerende", "Studerende på universitetet")
+
+System(StudieTips, "StudieTips", "Tips platform for studerende")
+
+Rel(mod, StudieTips, "Uses", "HTTP")
+Rel(student, StudieTips, "Uses", "HTTP")
+
+
+
+
+@enduml
+
+

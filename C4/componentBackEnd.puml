@@ -1,0 +1,23 @@
+@startuml
+!include <C4/C4_Container>
+!include <C4/C4_Component>
+
+skinparam linetype ortho
+
+Container(web_app, "Web Application", "Container: C#, Razor")
+ContainerDb(Database, "Database","Container: MS SQL Server","Stores Tips and User information")
+
+Container_Boundary(backend,"Back-End API",""){
+    Component(C1, "HTTPS-Message-Receiver", "Component: technology")
+    Component(C2, "MSSQL-Query-Handler", "Component: technology")
+}
+
+web_app -[hidden]left- C1
+
+backend -[hidden]right- C2
+
+Rel(C2,Database,"Queries for data")
+Rel(web_app,C1,"Makes API calls to","JSON/HTTPS")
+Rel(C1,C2,"Relays Query Choice")
+ 
+@enduml
