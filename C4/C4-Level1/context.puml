@@ -12,9 +12,4 @@ Rel(mod, StudieTips, "Uses", "HTTP")
 Rel(student, StudieTips, "Uses", "HTTP")
 Rel(StudieTips, Database, "Uses", "SQL")
 
-
-
-
 @enduml
-
-

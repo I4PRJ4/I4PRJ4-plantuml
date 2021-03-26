@@ -1,0 +1,26 @@
+@startuml Container Diagram
+!include <C4/C4_Container>
+
+'skinparam linetype ortho
+
+'left to right direction
+
+Person(User, "Studerende")
+Person(Moderator, "Moderator")
+
+System_Boundary(c1, "StudieTips") {
+    Container(web_app, "Web Application", "Container: C#, ASP.NET Core 5 MVC", "Handles user-input, populates views and sends them to visitor")
+}
+ContainerDb_Ext(Database, "Database","Container: MS SQL Server","Stores Tips and User information")
+
+'User -[Hidden]- Moderator
+'Moderator -[hidden]left- web_app
+
+Rel_D(User,web_app, "Visits studietips.com", "HTTPS")
+Rel_U(Moderator, web_app, "Visits studietips.com", "HTTPS")
+
+
+Rel_R(web_app, Database, "Queries for data", "SQL")
+
+
+@enduml
