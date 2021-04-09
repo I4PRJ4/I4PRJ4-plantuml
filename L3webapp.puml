@@ -5,7 +5,7 @@
 'Person(User, "Studerende")
 'Person(Moderator, "Moderator")
 
-Container_Boundary(webapp,"WebApplication",""){
+Container_Boundary(Views,"Views",""){
     Component(View1, "FrontPage View", "Component: ASP.NET Razor View")
     Component(View2, "CourseList View", "Component: ASP.NET Razor View")
     Component(View3, "ClassList View", "Component: ASP.NET Razor View")

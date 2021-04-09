@@ -5,19 +5,27 @@
 'Person(User, "Studerende")
 'Person(Moderator, "Moderator")
 
-Container_Boundary(Backend,"Backend",""){
+Container_Boundary(webapp,"Web Application",""){
     
-    Component(Handlers1, "FrontPage Handler", "Component: ASP.NET MVC Handler","Constitutes a Controller and Model")
+    Component(FrontPageController, "FrontPage Controller", "Component: ASP.NET MVC Controller")
+    Component(LoginController, "LoginPage Controller", "Component: ASP.NET MVC Controller")
+    Component(TipListController, "TipsList Controller", "Component: ASP.NET MVC Controller")
+    Component(AddTipController, "Add Tip Controller", "Component: ASP.NET MVC Controller")
     Component(Handlers2, "CourseList Handler", "Component: ASP.NET MVC Handler","Constitutes a Controller and Model")
     Component(Handlers3, "ClassList Handler", "Component: ASP.NET MVC Handler","Constitutes a Controller and Model")
-    Component(Handlers4, "TipsList Handler", "Component: ASP.NET MVC Handler","Constitutes a Controller and Model")
-    Component(Handlers5, "Add Tip Handler", "Component: ASP.NET MVC Handler","Constitutes a Controller and Model")
-    Component(Handlers6, "LoginPage Handler", "Component: ASP.NET MVC Handler","Constitutes a Controller and Model")
     
+    Component(LoginModel,"Login Model","Component: ASP.NET MVC Model","The model for Login View")
+    Component(TipModel,"Tip Model", "Component: ASP.NET MVC Model","A generic Model for Tips in a View")
 } 
 'Container(Backend, "Backend","Container: MS SQL Server","Stores Tips and User information")
 
 'Rel(User, webapp, "Access")
 'Rel(Moderator, webapp, "Access")
 'Rel(webapp, Backend,"Reads from and writes to")
+
+
+
+Rel(LoginController,LoginModel,"Uses")
+Rel(TipListController,TipModel,"Uses")
+Rel(AddTipController,TipModel,"Uses")
 @enduml

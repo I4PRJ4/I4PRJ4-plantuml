@@ -7,13 +7,10 @@
 
 Container_Boundary(API,"API",""){
     
-    Component(Repository1, "FrontPage Repository", "Component: ASP.NET Repository","Repository to interface between frontPage handler and database")
-    Component(Repository2, "CourseList Repository", "Component: ASP.NET Repository","Repository to interface between CourseList handler and database")
-    Component(Repository3, "ClassList Repository", "Component: ASP.NET Repository","Repository to interface between ClassList handler and database")
-    Component(Repository4, "TipsList Repository", "Component: ASP.NET Repository","Repository to interface between TipsList handler and database")
-    Component(Repository5, "Add Tip Repository", "Component: ASP.NET Repository","Repository to interface between Add Tip handler and database")
-    Component(Repository6, "LoginPage Repository", "Component: ASP.NET Repository","Repository to interface between LoginPage handler and database")
-    
+    Component(Repository1, "Course Repository", "Component: ASP.NET Repository","Handles fetching and adding new courses")
+    Component(Repository2, "Class Repository", "Component: ASP.NET Repository","Handles fetching and adding new classes")
+    Component(Repository3, "Tip Repository", "Component: ASP.NET Repository","Handles fetching and adding new tips")
+    Component(Repository4, "Login Repository", "Component: ASP.NET Repository","Handles validation for login")    
 } 
 'Container(Backend, "Backend","Container: MS SQL Server","Stores Tips and User information")
 
