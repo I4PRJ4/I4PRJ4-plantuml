@@ -1,15 +1,19 @@
 @startuml System Context Diagram
 !include <C4/C4_Container>
 
+title C4 - Context Diagram - StudieTips
+
 Person(mod, "Moderator", "Administrerer/filtrerer indkomne tips fra studerende")
 Person(student, "Studerende", "Studerende på universitetet")
 
 System(StudieTips, "StudieTips", "Tips platform for studerende")
 
 ContainerDb_Ext(Database, "Database","","Stores Tips and User information")
+Container_Ext(MIP, "Microsoft Identity Platform","","Stores Tips and User information")
 
 Rel(mod, StudieTips, "Uses", "HTTP")
 Rel(student, StudieTips, "Uses", "HTTP")
 Rel(StudieTips, Database, "Uses", "SQL")
+Rel(StudieTips, MIP, "Authenticates", "HTTP")
 
 @enduml

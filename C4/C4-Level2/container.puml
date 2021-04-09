@@ -1,26 +1,40 @@
 @startuml Container Diagram
 !include <C4/C4_Container>
 
-'skinparam linetype ortho
+'skinparam linetype polyline
 
 'left to right direction
+title C4 - Container Diagram - StudieTips
 
-Person(User, "Studerende")
+
 Person(Moderator, "Moderator")
+Person(User, "Studerende")
 
 System_Boundary(c1, "StudieTips") {
-    Container(web_app, "Web Application", "Container: C#, ASP.NET Core 5 MVC", "Handles user-input, populates views and sends them to visitor")
+    Container(Views, "Views", "Container: C#, ASP.NET Core 5 Static Views", "Creates static views for user")
+    Container(WebApplication, "Web Application", "Container: C#, ASP.NET Core 5 Controller & Models", "Controls user-input and calls on model")
+    Container(API, "API", "Container: C#, ASP.NET Core 5 Repositories", "Provides functionality to interface with DB")
 }
 ContainerDb_Ext(Database, "Database","Container: MS SQL Server","Stores Tips and User information")
 
-'User -[Hidden]- Moderator
-'Moderator -[hidden]left- web_app
+Lay_D(User,c1)
+Lay_D(Moderator,c1)
+Lay_R(Views,WebApplication)
+'Lay_D(Moderator,WebApplication)
 
-Rel_D(User,web_app, "Visits studietips.com", "HTTPS")
-Rel_U(Moderator, web_app, "Visits studietips.com", "HTTPS")
+Rel(User,Views, "Views and adds tips using")
+Rel(Moderator, Views, "Views and Moderates Tips using")
 
 
-Rel_R(web_app, Database, "Queries for data", "SQL")
+Rel(User,WebApplication, "Visits studietips.com", "HTTPS")
+Rel(Moderator, WebApplication, "Visits studietips.com", "HTTPS")
+
+Rel(WebApplication,Views, "Deliver which page view is selected")
+
+Rel(WebApplication,API, "Fetches data from")
+
+Rel(API,Database, "Queries for data")
+
 
 
 @enduml
