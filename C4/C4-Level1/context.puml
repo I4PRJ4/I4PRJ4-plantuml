@@ -1,7 +1,8 @@
 @startuml System Context Diagram
 !include <C4/C4_Container>
+LAYOUT_AS_SKETCH()
 
-title C4 - Context Diagram - StudieTips
+left footer C4 - Context Diagram - StudieTips
 
 Person(mod, "Moderator", "Administrerer/filtrerer indkomne tips fra studerende")
 Person(student, "Studerende", "Studerende på universitetet")

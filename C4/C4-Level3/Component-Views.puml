@@ -1,6 +1,7 @@
 @startuml
 !include <C4/C4_Container>
 !include <C4/C4_Component>
+LAYOUT_AS_SKETCH()
 
 left footer "   C4 - Component Diagram - Views - StudieTips"
 

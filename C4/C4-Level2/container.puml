@@ -1,11 +1,8 @@
 @startuml Container Diagram
 !include <C4/C4_Container>
+LAYOUT_AS_SKETCH()
 
-'skinparam linetype polyline
-
-'left to right direction
-title C4 - Container Diagram - StudieTips
-
+left footer C4 - Container Diagram - StudieTips
 
 Person(Moderator, "Moderator")
 Person(User, "Studerende")
@@ -20,7 +17,6 @@ ContainerDb_Ext(Database, "Database","Container: MS SQL Server","Stores Tips and
 Lay_D(User,c1)
 Lay_D(Moderator,c1)
 Lay_R(Views,WebApplication)
-'Lay_D(Moderator,WebApplication)
 
 Rel(User,Views, "Views and adds tips using")
 Rel(Moderator, Views, "Views and Moderates Tips using")
