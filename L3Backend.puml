@@ -1,0 +1,23 @@
+@startuml
+!include <C4/C4_Container>
+!include <C4/C4_Component>
+
+'Person(User, "Studerende")
+'Person(Moderator, "Moderator")
+
+Container_Boundary(Backend,"Backend",""){
+    
+    Component(Handlers1, "FrontPage Handler", "Component: ASP.NET MVC Handler","Constitutes a Controller and Model")
+    Component(Handlers2, "CourseList Handler", "Component: ASP.NET MVC Handler","Constitutes a Controller and Model")
+    Component(Handlers3, "ClassList Handler", "Component: ASP.NET MVC Handler","Constitutes a Controller and Model")
+    Component(Handlers4, "TipsList Handler", "Component: ASP.NET MVC Handler","Constitutes a Controller and Model")
+    Component(Handlers5, "Add Tip Handler", "Component: ASP.NET MVC Handler","Constitutes a Controller and Model")
+    Component(Handlers6, "LoginPage Handler", "Component: ASP.NET MVC Handler","Constitutes a Controller and Model")
+    
+} 
+'Container(Backend, "Backend","Container: MS SQL Server","Stores Tips and User information")
+
+'Rel(User, webapp, "Access")
+'Rel(Moderator, webapp, "Access")
+'Rel(webapp, Backend,"Reads from and writes to")
+@enduml

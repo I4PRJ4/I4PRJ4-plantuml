@@ -1,0 +1,32 @@
+@startuml Container Diagram
+!include <C4/C4_Container>
+
+'skinparam linetype ortho
+
+'left to right direction
+
+Person(User, "Studerende")
+Person(Moderator, "Moderator")
+
+System_Boundary(c1, "StudieTips") {
+    Container(web_app, "Web Application", "Container: C#, ASP.NET Core 5 Static Views", "Creates static views for user")
+    Container(Backend, "Backend", "Container: C#, ASP.NET Core 5 Controller & Models", "Controls user-input and calls on model")
+    Container(API, "API", "Container: C#, ASP.NET Core 5 API", "Provides functionality to interface with DB")
+}
+ContainerDb_Ext(Database, "Database","Container: MS SQL Server","Stores Tips and User information")
+
+User -[Hidden]left- Moderator
+'web_app -[hidden]left- Backend
+
+Rel_D(User,web_app, "Visits studietips.com", "HTTPS")
+Rel_U(Moderator, web_app, "Visits studietips.com", "HTTPS")
+
+Rel_D(web_app,Backend, "Deliver which page view is selected", "HTTPS")
+
+Rel_D(Backend,API, "Queries for data", "JSON")
+
+Rel_D(API,Database, "Queries for data", "SQL")
+
+
+
+@enduml
