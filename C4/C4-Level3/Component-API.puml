@@ -1,7 +1,6 @@
-@startuml
+@startuml Component Diagram API
 !include <C4/C4_Container>
 !include <C4/C4_Component>
-LAYOUT_AS_SKETCH()
 
 left footer "   C4 - Component Diagram - API - StudieTips"
 
@@ -10,7 +9,6 @@ Container_Boundary(API,"API",""){
     Component(Repository1, "Degree Repository", "Component: ASP.NET Repository","Handles fetching and adding new degrees")
     Component(Repository2, "Course Repository", "Component: ASP.NET Repository","Handles fetching and adding new Courses")
     Component(Repository3, "Tip Repository", "Component: ASP.NET Repository","Handles fetching and adding new tips")
-    Component(Repository4, "Login Repository", "Component: ASP.NET Repository","Handles validation for login")    
 }
 
 @enduml

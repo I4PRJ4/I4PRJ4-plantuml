@@ -1,6 +1,5 @@
 @startuml System Context Diagram
 !include <C4/C4_Container>
-LAYOUT_AS_SKETCH()
 
 left footer C4 - Context Diagram - StudieTips
 
@@ -9,8 +8,8 @@ Person(student, "Studerende", "Studerende på universitetet")
 
 System(StudieTips, "StudieTips", "Tips platform for studerende")
 
-ContainerDb_Ext(Database, "Database","","Stores Tips and User information")
-Container_Ext(MIP, "Microsoft Identity Platform","","Stores Tips and User information")
+ContainerDb_Ext(Database, "Database","MS SQL Server","Stores Tips and User information")
+Container_Ext(MIP, "Microsoft Identity Platform",,"Microsoft login and authentication platform")
 
 Rel(mod, StudieTips, "Uses", "HTTP")
 Rel(student, StudieTips, "Uses", "HTTP")
