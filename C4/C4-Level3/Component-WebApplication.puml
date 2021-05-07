@@ -1,0 +1,20 @@
+@startuml Component Diagram WebApp
+!include <C4/C4_Container>
+!include <C4/C4_Component>
+
+left footer "   C4 - Component Diagram - Web Application - StudieTips"
+
+Container_Boundary(webapp,"Web Application",""){
+    
+    Component(FrontPageController, "FrontPage Controller", "Component: ASP.NET MVC Controller")
+    Component(TipListController, "TipsList Controller", "Component: ASP.NET MVC Controller")
+    Component(AddTipController, "Add Tip Controller", "Component: ASP.NET MVC Controller")
+    Component(Handlers2, "DegreeList Handler", "Component: ASP.NET MVC Handler","Constitutes a Controller and Model")
+    Component(Handlers3, "CourseList Handler", "Component: ASP.NET MVC Handler","Constitutes a Controller and Model")
+    
+    Component(TipModel,"Tip Model", "Component: ASP.NET MVC Model","A generic Model for Tips in a View")
+} 
+
+Rel(TipListController,TipModel,"Uses")
+Rel(AddTipController,TipModel,"Uses")
+@enduml
