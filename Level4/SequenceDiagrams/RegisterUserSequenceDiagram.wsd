@@ -1,0 +1,65 @@
+@startuml RegisterUserSequenceDiagram
+
+
+actor User as User
+participant LoginPartialView as LoginPartialView
+participant MicrosoftIdentitySystem as  MicrosoftIdentitySystem
+participant HomeController as HomeController
+database StudieTipsDB as Database
+
+User -> LoginPartialView : clicks on "Register"
+activate LoginPartialView
+
+LoginPartialView -> MicrosoftIdentitySystem : sends action
+deactivate LoginPartialView
+activate MicrosoftIdentitySystem
+
+MicrosoftIdentitySystem -> MicrosoftIdentitySystem : Creates RegisterView
+loop While user not registered
+    User -> MicrosoftIdentitySystem : inputs e-mail, password and password confirmation
+
+
+    alt E-mail is invalid
+        MicrosoftIdentitySystem -> MicrosoftIdentitySystem : Display 'The Email field is not a valid e-mail address'.
+
+    else Password is less than 6 or greater than 100 characters
+        MicrosoftIdentitySystem -> MicrosoftIdentitySystem : Display 'The password must be at least 6 and at max 100 chracters long.'
+
+    else Password and confirmation password do not match
+        MicrosoftIdentitySystem -> MicrosoftIdentitySystem : Display 'The password and confirmation password do not match'
+
+    end
+
+    User -> MicrosoftIdentitySystem : User clicks register button
+
+
+    alt Password does not contain at least one symbol
+        MicrosoftIdentitySystem -> MicrosoftIdentitySystem : Display 'Passwords must have at least one non alphanumeric character'.
+
+    else Passord does not contain at least one digit
+        MicrosoftIdentitySystem -> MicrosoftIdentitySystem : Display 'Passwords must have at least one digit ('0'-'9')'.
+
+    else Password does not contain uppercase letters
+        MicrosoftIdentitySystem -> MicrosoftIdentitySystem : Display 'Passwords must have at least one uppercase ('A'-'Z').'
+
+    else Password does not contain 4 different characters
+        MicrosoftIdentitySystem -> MicrosoftIdentitySystem : Display 'Passwords must use at least 4 different characters.'
+
+    else E-mail is already in use 
+        MicrosoftIdentitySystem -> MicrosoftIdentitySystem : Display 'Username 'E-mail' is already taken.'
+
+    end
+
+    MicrosoftIdentitySystem -> Database : Creates user with e-mail and password
+
+end
+
+
+MicrosoftIdentitySystem -> HomeController : returns action
+deactivate MicrosoftIdentitySystem
+
+activate HomeController
+HomeController -> HomeController : Create home view
+deactivate HomeController
+
+@enduml
