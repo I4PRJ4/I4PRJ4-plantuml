@@ -12,7 +12,6 @@ System_Boundary(c1, "StudieTips") {
     Container(API, "API", "Container: C#, ASP.NET Core 5 Repositories", "Provides functionality to interface with DB")
 }
 ContainerDb_Ext(Database, "Database","Container: MS SQL Server","Stores Tips and User information")
-Container_Ext(MSI, "Microsoft Identity","Container: MS Identity Server","Microsoft login and authentication platform")
 
 Lay_D(User,c1)
 Lay_D(Moderator,c1)
@@ -30,7 +29,7 @@ Rel(WebApplication,Views, "Deliver which page view is selected")
 Rel(WebApplication,API, "Fetches data from")
 
 Rel(API,Database, "Queries for data")
-Rel(WebApplication,MSI, "Handles authentication")
+
 
 
 

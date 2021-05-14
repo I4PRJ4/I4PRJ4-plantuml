@@ -9,11 +9,10 @@ Person(student, "Studerende", "Studerende på universitetet")
 System(StudieTips, "StudieTips", "Tips platform for studerende")
 
 ContainerDb_Ext(Database, "Database","MS SQL Server","Stores Tips and User information")
-Container_Ext(MIP, "Microsoft Identity Platform",,"Microsoft login and authentication platform")
+
 
 Rel(mod, StudieTips, "Uses", "HTTP")
 Rel(student, StudieTips, "Uses", "HTTP")
 Rel(StudieTips, Database, "Uses", "SQL")
-Rel(StudieTips, MIP, "Authenticates", "HTTP")
 
 @enduml
