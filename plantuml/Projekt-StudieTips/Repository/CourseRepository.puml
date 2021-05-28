@@ -1,0 +1,13 @@
+@startuml
+class CourseRepository {
+    + CourseRepository(context:DatabaseContext)
+    + FindCourses(id:int?) : List<Course>
+    + <<async>> AddCourse(course:Course) : Task
+    + GetCourse(id:int?) : Course
+    + <<async>> RemoveCourse(course:Course) : Task
+    + <<async>> UpdateCourse(course:Course) : Task
+    + CourseExists(id:int) : bool
+}
+ICourseRepository <|-- CourseRepository
+CourseRepository --> "Context" DatabaseContext
+@enduml

@@ -1,0 +1,14 @@
+@startuml
+
+hide empty fields
+hide empty methods
+
+!include .\..\Controllers\TipsController.puml
+!include .\..\Models\Degree.puml
+!include .\..\Models\Course.puml
+!include .\..\Models\SearchDTo.puml
+!include .\..\Models\Tip.puml
+!include .\..\Repository\TipRepository.puml
+!include .\..\Repository\ITipRepository.puml
+
+@enduml

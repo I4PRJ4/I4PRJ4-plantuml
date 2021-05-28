@@ -1,0 +1,5 @@
+@startuml
+class adminCreate <<partial>> {
+}
+Migration <|-- adminCreate
+@enduml

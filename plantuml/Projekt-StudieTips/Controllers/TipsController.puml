@@ -1,0 +1,17 @@
+@startuml
+class TipsController {
+    + TipsController(repository:ITipRepository, user:UserManager<IdentityUser>)
+    + <<async>> Index(id:int?, sortOrder:string, page:int?) : Task<IActionResult>
+    + SearchTip(sortOrder:string, page:int?, search:SearchDto) : IActionResult
+    + <<async>> Details(id:int?) : Task<IActionResult>
+    + Create(value:int?) : IActionResult
+    + <<async>> Create(tip:Tip) : Task<IActionResult>
+    + <<async>> Edit(id:int?) : Task<IActionResult>
+    + <<async>> Edit(id:int, tip:Tip) : Task<IActionResult>
+    + <<async>> Delete(id:int?) : Task<IActionResult>
+    + <<async>> DeleteConfirmed(id:int) : Task<IActionResult>
+}
+TipRepository <-- TipsController
+Tip <-- TipsController
+SearchDto <-- TipsController
+@enduml

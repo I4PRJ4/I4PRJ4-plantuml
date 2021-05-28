@@ -1,0 +1,13 @@
+@startuml
+
+hide empty fields
+hide empty methods
+
+!include .\..\Controllers\DegreesController.puml
+!include .\..\Models\Degree.puml
+!include .\..\Models\Course.puml
+!include .\..\Models\Tip.puml
+!include .\..\Repository\DegreeRepository.puml
+!include .\..\Repository\IDegreeRepository.puml
+
+@enduml

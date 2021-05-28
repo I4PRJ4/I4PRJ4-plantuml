@@ -1,0 +1,13 @@
+@startuml
+class DegreeRepository {
+    + DegreeRepository(context:DatabaseContext)
+    + GetDegrees() : List<Degree>
+    + FindDegree(id:int?) : Degree
+    + <<async>> AddDegree(degree:Degree) : Task
+    + <<async>> UpdateDegree(degree:Degree) : Task
+    + <<async>> RemoveDegree(degree:Degree) : Task
+    + DegreeExists(id:int) : bool
+}
+IDegreeRepository <|-- DegreeRepository
+DegreeRepository --> "Context" DatabaseContext
+@enduml

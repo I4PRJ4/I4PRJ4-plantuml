@@ -1,0 +1,7 @@
+@startuml
+class HomeController {
+    + HomeController()
+    + Index() : IActionResult
+    + UnauthorizedAccess() : IActionResult
+}
+@enduml

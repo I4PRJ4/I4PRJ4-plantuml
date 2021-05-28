@@ -1,0 +1,5 @@
+@startuml
+class asdjkaldss <<partial>> {
+}
+Migration <|-- asdjkaldss
+@enduml

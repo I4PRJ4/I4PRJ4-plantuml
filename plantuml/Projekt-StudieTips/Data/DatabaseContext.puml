@@ -1,0 +1,8 @@
+@startuml
+class DatabaseContext {
+    + DatabaseContext(options:DbContextOptions<DatabaseContext>)
+}
+DatabaseContext --> Tip
+DatabaseContext --> Course
+DatabaseContext --> Degree
+@enduml

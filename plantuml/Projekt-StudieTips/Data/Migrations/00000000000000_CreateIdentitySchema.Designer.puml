@@ -1,0 +1,4 @@
+@startuml
+class CreateIdentitySchema <<partial>> {
+}
+@enduml

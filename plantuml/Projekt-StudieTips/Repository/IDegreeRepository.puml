@@ -1,0 +1,12 @@
+@startuml
+interface IDegreeRepository {
+    + GetDegrees() : List<Degree>
+    + FindDegree(id:int?) : Degree
+    + AddDegree(degree:Degree) : Task
+    + UpdateDegree(degree:Degree) : Task
+    + RemoveDegree(degree:Degree) : Task
+    + DegreeExists(id:int) : bool
+}
+
+IDegreeRepository --> Degree
+@enduml

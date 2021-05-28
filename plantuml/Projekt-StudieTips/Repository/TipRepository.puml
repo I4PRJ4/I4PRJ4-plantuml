@@ -1,0 +1,18 @@
+@startuml
+class TipRepository {
+    + TipRepository(context:DatabaseContext)
+    + <<async>> GetTip(id:int?) : Task<Tip>
+    + <<async>> GetTips(id:int?, sortOrder:string) : Task<List<Tip>>
+    + <<async>> GetCourse(id:int?) : Task<Course>
+    + <<async>> GetTipsWithinSearchTerm(search:SearchDto) : Task<List<Tip>>
+    + <<async>> GetTipDetails(id:int?) : Task<Tip>
+    + TipExists(id:int) : bool
+    + <<async>> GetUnmoderatedTips() : Task<List<Tip>>
+    + SaveChanges() : void
+    + <<async>> AddTip(tip:Tip) : Task
+    + <<async>> UpdateTip(tip:Tip) : Task
+    + <<async>> DeleteTip(id:int) : Task
+}
+ITipRepository <|-- TipRepository
+TipRepository --> "Context" DatabaseContext
+@enduml

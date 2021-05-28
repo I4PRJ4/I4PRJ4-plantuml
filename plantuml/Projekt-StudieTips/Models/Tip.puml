@@ -1,0 +1,14 @@
+@startuml
+class Tip {
+    + TipId : int <<get>> <<set>>
+    + Username : string <<get>> <<set>>
+    + CourseId : int <<get>> <<set>>
+    + Course : Course <<get>> <<set>>
+    + Date : DateTime <<get>> <<set>>
+    + Headline : string <<get>> <<set>>
+    + Text : string <<get>> <<set>>
+    + IsVerified : bool <<get>> <<set>> = false
+}
+
+Tip --> Course
+@enduml

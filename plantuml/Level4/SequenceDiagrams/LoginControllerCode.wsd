@@ -1,0 +1,42 @@
+@startuml LoginSequenceDiagram
+
+
+actor User as User
+participant LoginPartialView as LoginPartialView
+participant MicrosoftIdentityLibrary as  MicrosoftIdentityLibrary
+participant HomeController as HomeController
+database StudieTipsDB as Database
+
+User -> LoginPartialView : clicks on "log in"
+activate LoginPartialView
+
+LoginPartialView -> MicrosoftIdentityLibrary : sends action
+deactivate LoginPartialView
+activate MicrosoftIdentityLibrary
+
+MicrosoftIdentityLibrary -> MicrosoftIdentityLibrary : Creates LoginView
+loop While user not logged in
+    User -> MicrosoftIdentityLibrary : inputs e-mail and password
+
+    alt User checks 'Remember Me'-button
+        User ->  MicrosoftIdentityLibrary : checks box
+
+    end
+
+    User -> MicrosoftIdentityLibrary : User clicks log-in button
+
+    MicrosoftIdentityLibrary -> Database : Validates e-mail and password
+
+    alt E-mail and/or Password is incorrect
+        MicrosoftIdentityLibrary -> MicrosoftIdentityLibrary : Display 'Invalid login attempt'
+
+    end
+end
+MicrosoftIdentityLibrary -> HomeController : returns action
+deactivate MicrosoftIdentityLibrary
+
+activate HomeController
+HomeController -> HomeController : Create home 
+deactivate HomeController
+
+@enduml

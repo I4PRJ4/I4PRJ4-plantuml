@@ -1,0 +1,18 @@
+@startuml
+class CoursesController {
+    + CoursesController(courseRepository:ICourseRepository, degreeRepository:IDegreeRepository)
+    + Index(DegreeId:int?) : IActionResult
+    + Redirect(CourseId:int?, submit:string?) : IActionResult
+    + <<async>> Create(DegreeId:int?) : Task<IActionResult>
+    + <<async>> Create(course:Course) : Task<IActionResult>
+    + <<async>> Edit(id:int?) : Task<IActionResult>
+    + <<async>> Edit(id:int, course:Course) : Task<IActionResult>
+    + <<async>> Delete(id:int?) : Task<IActionResult>
+    + <<async>> DeleteConfirmed(id:int) : Task<IActionResult>
+}
+CourseRepository <-- CoursesController
+DegreeRepository <-- CoursesController
+Tip <-- CoursesController
+Course <-- CoursesController
+DegreeCourse <-- CoursesController
+@enduml

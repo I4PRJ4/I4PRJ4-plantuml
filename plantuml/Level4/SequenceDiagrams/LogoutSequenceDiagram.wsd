@@ -1,0 +1,27 @@
+@startuml LogoutSequenceDiagram
+
+
+actor User as User
+participant LoginPartialView as LoginPartialView
+participant MicrosoftIdentityLibrary as  MicrosoftIdentityLibrary
+participant HomeController as HomeController
+
+User -> LoginPartialView : clicks on "log out"
+activate LoginPartialView
+
+LoginPartialView -> MicrosoftIdentityLibrary : sends action
+deactivate LoginPartialView
+
+activate MicrosoftIdentityLibrary
+MicrosoftIdentityLibrary -> MicrosoftIdentityLibrary : Creates LogoutView
+
+MicrosoftIdentityLibrary -> MicrosoftIdentityLibrary : End user session
+
+MicrosoftIdentityLibrary -> HomeController : returns action
+deactivate MicrosoftIdentityLibrary
+
+activate HomeController
+HomeController -> HomeController : Create home view
+deactivate HomeController
+
+@enduml

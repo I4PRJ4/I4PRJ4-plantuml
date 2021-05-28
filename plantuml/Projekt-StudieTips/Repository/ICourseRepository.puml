@@ -1,0 +1,12 @@
+@startuml
+interface ICourseRepository {
+    + FindCourses(id:int?) : List<Course>
+    + GetCourse(id:int?) : Course
+    + AddCourse(course:Course) : Task
+    + UpdateCourse(course:Course) : Task
+    + RemoveCourse(course:Course) : Task
+    + CourseExists(id:int) : bool
+}
+
+Course <-- ICourseRepository
+@enduml

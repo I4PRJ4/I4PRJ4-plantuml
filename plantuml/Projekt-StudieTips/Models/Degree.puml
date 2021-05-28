@@ -1,0 +1,8 @@
+@startuml
+class Degree {
+    + DegreeId : int <<get>> <<set>>
+    + DegreeName : string <<get>> <<set>>
+    + Courses : List<Course> <<get>> <<set>>
+}
+Degree --> Course
+@enduml

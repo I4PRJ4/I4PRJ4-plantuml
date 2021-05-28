@@ -1,0 +1,19 @@
+@startuml
+interface ITipRepository {
+    + GetTip(id:int?) : Task<Tip>
+    + GetTips(id:int?, sortOrder:string) : Task<List<Tip>>
+    + GetCourse(id:int?) : Task<Course>
+    + GetTipsWithinSearchTerm(search:SearchDto) : Task<List<Tip>>
+    + GetTipDetails(id:int?) : Task<Tip>
+    + TipExists(id:int) : bool
+    + GetUnmoderatedTips() : Task<List<Tip>>
+    + SaveChanges() : void
+    + DeleteTip(id:int) : Task
+    + AddTip(tip:Tip) : Task
+    + UpdateTip(tip:Tip) : Task
+}
+
+ITipRepository --> Tip
+ITipRepository --> SearchDto
+ITipRepository --> Course
+@enduml

@@ -1,0 +1,15 @@
+@startuml
+class DegreesController {
+    + DegreesController(degreeRepository:IDegreeRepository)
+    + <<async>> Index() : Task<IActionResult>
+    + Redirect(DegreeId:int?, submit:string?) : IActionResult
+    + Create() : IActionResult
+    + <<async>> Create(degree:Degree) : Task<IActionResult>
+    + <<async>> Edit(id:int?) : Task<IActionResult>
+    + <<async>> Edit(id:int, degree:Degree) : Task<IActionResult>
+    + <<async>> Delete(id:int?) : Task<IActionResult>
+    + <<async>> DeleteConfirmed(id:int) : Task<IActionResult>
+}
+DegreeRepository <-- DegreesController
+Degree <-- DegreesController
+@enduml

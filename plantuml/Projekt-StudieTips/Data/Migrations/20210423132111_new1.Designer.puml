@@ -1,0 +1,4 @@
+@startuml
+class new1 <<partial>> {
+}
+@enduml

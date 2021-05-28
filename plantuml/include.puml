@@ -1,0 +1,37 @@
+@startuml
+skinparam linetype ortho
+hide empty fields
+hide empty methods
+
+left to right direction
+
+!include .\\Projekt-StudieTips\Data\DatabaseContext.puml
+together InterfaceRepos {
+!include .\\Projekt-StudieTips\Repository\IDegreeRepository.puml
+!include .\\Projekt-StudieTips\Repository\ICourseRepository.puml
+!include .\\Projekt-StudieTips\Repository\ITipRepository.puml
+}
+
+!include .\\Projekt-StudieTips\Models\ViewModels\DegreeCourse.puml
+!include .\\Projekt-StudieTips\Models\Tip.puml
+!include .\\Projekt-StudieTips\Models\Degree.puml
+!include .\\Projekt-StudieTips\Models\Course.puml
+!include .\\Projekt-StudieTips\Models\Tip.puml
+!include .\\Projekt-StudieTips\Models\SearchDto.puml
+
+
+together Repos {
+!include .\\Projekt-StudieTips\Repository\CourseRepository.puml
+!include .\\Projekt-StudieTips\Repository\DegreeRepository.puml
+!include .\\Projekt-StudieTips\Repository\TipRepository.puml
+}
+together Controllers {
+!include .\\Projekt-StudieTips\Controllers\HomeController.puml
+!include .\\Projekt-StudieTips\Controllers\DegreesController.puml
+!include .\\Projekt-StudieTips\Controllers\CoursesController.puml
+!include .\\Projekt-StudieTips\Controllers\TipsController.puml
+!include .\\Projekt-StudieTips\Controllers\ModeratorController.puml
+}
+
+
+@enduml

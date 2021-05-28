@@ -1,0 +1,10 @@
+@startuml
+class ModeratorController {
+    + ModeratorController(repository:ITipRepository)
+    + <<async>> Index(sortOrder:string, page:int?) : Task<IActionResult>
+    + <<async>> VerifyTip(id:int?) : Task<IActionResult>
+    + <<async>> DenyTip(id:int) : Task<IActionResult>
+}
+TipRepository <-- ModeratorController
+Tip <-- ModeratorController
+@enduml
