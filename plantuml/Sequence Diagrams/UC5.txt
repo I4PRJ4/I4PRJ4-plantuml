@@ -1,0 +1,41 @@
+@startuml
+title Use Case 5 - Fjern tip
+
+actor       Moderator       as mod
+boundary       HomeViewIndex       as homeindex
+boundary       TipsViewIndex       as tipsindex
+boundary       TipsViewDelete       as tipsdel
+control       TipsController       as tipscont
+boundary       TipsRepository       as tipsrepo
+database       Database       as db
+
+/'entity       TipsModel       as tipsmodel'/
+
+mod -> tipsindex: Trykker på sletknap på tip
+
+Activate tipsindex
+tipsindex -> tipscont: Delete(int)
+Deactivate tipsindex
+
+Activate tipscont
+tipscont --> tipsdel: View(Tip)
+Deactivate tipscont
+
+mod -> tipsdel: Trykker på sletknap
+
+Activate tipsdel
+tipsdel -> tipscont: DeleteConfirmed(int)
+Deactivate tipsdel
+
+Activate tipscont
+tipscont -> tipsrepo: DeleteTip(int)
+
+
+Activate tipsrepo
+tipsrepo -> db: execute
+Deactivate tipsrepo
+
+tipscont -> homeindex: View()
+Deactivate tipscont
+
+@enduml

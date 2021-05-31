@@ -1,0 +1,32 @@
+@startuml
+
+title Use Case 3 - Søg Tip
+
+actor       Studerende       as stud
+boundary       HomeViewIndex       as homeindex
+boundary       TipsViewSearchTip       as tipssearch
+control       TipsController       as tipscont
+boundary       TipsRepository       as tipsrepo
+database       Database       as db
+
+stud -> homeindex: Indtaster søgeord og og trykker på søgeknap
+
+Activate homeindex
+homeindex -> tipscont: SearchTip()
+Deactivate homeindex
+
+Activate tipscont
+tipscont -> tipsrepo: SearchTip(SearchDto)
+
+Activate tipsrepo
+tipsrepo -> db: execute
+db --> tipsrepo: results
+tipsrepo --> tipscont: results
+Deactivate tipsrepo
+
+tipscont -> tipssearch: View('results')
+Deactivate tipscont
+
+
+
+@enduml
