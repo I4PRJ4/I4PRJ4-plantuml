@@ -10,7 +10,7 @@ Container_Boundary(Views,"Views",""){
     Component(View3, "CourseList View", "Component: ASP.NET Razor View")
     Component(View4, "TipsPageView", "Component: ASP.NET Razor View")
     Component(View5, "Add Tip View", "Component: ASP.NET Razor View")
-    Component(View7, "Menu view", "Component: ASP.NET Razor View", "Partial view to reuse the menu for all full views.")
+    Component(View7, "NavBar view", "Component: ASP.NET Razor View", "Delvis side til genbrug på alle andre sider.")
     
     
 } 
@@ -18,9 +18,9 @@ Container_Boundary(Views,"Views",""){
 Lay_D(View1,View2)
 Lay_D(View3,View4)
 
-Rel_R(View1,View7,"Utilizes")
-Rel_R(View2,View7,"Utilizes")
-Rel_R(View3,View7,"Utilizes")
-Rel_R(View4,View7,"Utilizes")
-Rel_U(View5,View7,"Utilizes")
+Rel_R(View1,View7,"Bruger")
+Rel_R(View2,View7,"Bruger")
+Rel_R(View3,View7,"Bruger")
+Rel_R(View4,View7,"Bruger")
+Rel_U(View5,View7,"Bruger")
 @enduml

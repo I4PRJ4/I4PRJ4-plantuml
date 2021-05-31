@@ -1,0 +1,14 @@
+@startuml Component Diagram Repository
+!include <C4/C4_Container>
+!include <C4/C4_Component>
+
+left footer "   C4 - Component Diagram - Repository - StudieTips"
+
+Container_Boundary(API,"Repository",""){
+    
+    Component(Repository1, "Degree Repository", "Component: ASP.NET Repository","Håndterer hentning og tilføjelser af nye uddannelser")
+    Component(Repository2, "Course Repository", "Component: ASP.NET Repository","Håndterer hentning og tilføjelser af nye Kurser")
+    Component(Repository3, "Tip Repository", "Component: ASP.NET Repository","Håndterer hentning og tilføjelser af nye Tips")
+}
+
+@enduml

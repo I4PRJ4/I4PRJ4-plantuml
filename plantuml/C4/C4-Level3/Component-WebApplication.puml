@@ -2,19 +2,28 @@
 !include <C4/C4_Container>
 !include <C4/C4_Component>
 
+left to right direction
+
 left footer "   C4 - Component Diagram - Web Application - StudieTips"
 
 Container_Boundary(webapp,"Web Application",""){
     
     Component(FrontPageController, "FrontPage Controller", "Component: ASP.NET MVC Controller")
-    Component(TipListController, "TipsList Controller", "Component: ASP.NET MVC Controller")
-    Component(AddTipController, "Add Tip Controller", "Component: ASP.NET MVC Controller")
-    Component(Handlers2, "DegreeList Handler", "Component: ASP.NET MVC Handler","Constitutes a Controller and Model")
-    Component(Handlers3, "CourseList Handler", "Component: ASP.NET MVC Handler","Constitutes a Controller and Model")
+    Component(TipController, "Tip Controller", "Component: ASP.NET MVC Controller")
+    Component(DegreeController, "DegreeList Controller", "Component: ASP.NET MVC Controller")
+    Component(CourseController, "CourseList Controller", "Component: ASP.NET MVC Controller")
     
-    Component(TipModel,"Tip Model", "Component: ASP.NET MVC Model","A generic Model for Tips in a View")
+    Component(CourseModel,"Course Model", "Component: ASP.NET MVC Model","En generisk model for et kursus til en side")
+    Component(SearchModel,"SearchDTo Model", "Component: ASP.NET MVC Model","En data overførsels objekt for en side")
+    Component(DegreeModel,"Degree Model", "Component: ASP.NET MVC Model","En generisk model for en uddannelse til en side")
+    Component(DegreeCourseModel,"DegreeCourse Model", "Component: ASP.NET MVC Model","En generisk model for en uddannelse med kurser til en side")
+
+    Component(TipModel,"Tip Model", "Component: ASP.NET MVC Model","En generisk model for et tip til en side")
 } 
 
-Rel(TipListController,TipModel,"Uses")
-Rel(AddTipController,TipModel,"Uses")
+Rel(TipController,TipModel,"Bruger")
+Rel(TipController,SearchModel,"Bruger")
+Rel(CourseController,CourseModel,"Bruger")
+Rel(CourseController,DegreeCourseModel,"Bruger")
+Rel(DegreeController,DegreeModel,"Bruger")
 @enduml

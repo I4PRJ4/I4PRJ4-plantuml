@@ -1,5 +1,0 @@
-@startuml
-class new1 <<partial>> {
-}
-Migration <|-- new1
-@enduml

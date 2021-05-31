@@ -1,0 +1,16 @@
+@startuml DegreeController
+
+hide empty fields
+hide empty methods
+
+left footer "   C4 - Code Diagram - DegreesController - StudieTips"
+
+frame DegreesController{
+!include .\..\includes\Controllers\DegreesController.puml
+!include .\..\includes\Models\Degree.puml
+!include .\..\includes\Models\Course.puml
+!include .\..\includes\Models\Tip.puml
+!include .\..\includes\Repository\DegreeRepository.puml
+!include .\..\includes\Repository\IDegreeRepository.puml
+}
+@enduml

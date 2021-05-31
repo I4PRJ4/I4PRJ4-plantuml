@@ -1,0 +1,12 @@
+@startuml
+hide empty fields
+hide empty methods
+
+frame ModeratorController{
+
+class ModeratorController {
+}
+TipRepository <-- ModeratorController
+Tip <-- ModeratorController
+}
+@enduml

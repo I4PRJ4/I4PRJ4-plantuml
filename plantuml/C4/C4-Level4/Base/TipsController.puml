@@ -1,0 +1,12 @@
+@startuml
+hide empty fields
+hide empty methods
+
+frame TipsController{
+class TipsController {
+}
+TipRepository <-- TipsController
+Tip <-- TipsController
+SearchDto <-- TipsController
+}
+@enduml

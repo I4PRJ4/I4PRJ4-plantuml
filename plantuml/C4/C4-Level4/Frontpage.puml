@@ -1,0 +1,10 @@
+@startuml
+
+hide empty fields
+hide empty methods
+left footer "   C4 - Code Diagram - HomeController - StudieTips"
+
+frame HomeController{
+!include .\..\includes\\Controllers\HomeController.puml
+}
+@enduml

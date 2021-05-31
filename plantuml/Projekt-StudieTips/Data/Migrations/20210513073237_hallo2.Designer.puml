@@ -1,4 +1,0 @@
-@startuml
-class hallo2 <<partial>> {
-}
-@enduml

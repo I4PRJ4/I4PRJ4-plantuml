@@ -3,12 +3,12 @@
 
 left footer C4 - Context Diagram - StudieTips
 
-Person(mod, "Moderator", "Administrerer/filtrerer indkomne tips fra studerende")
+Person(mod, "Moderator", "Modererer/filtrerer indkomne tips fra studerende")
 Person(student, "Studerende", "Studerende på universitetet")
 
 System(StudieTips, "StudieTips", "Tips platform for studerende")
 
-ContainerDb_Ext(Database, "Database","MS SQL Server","Stores Tips and User information")
+ContainerDb_Ext(Database, "Database","MS SQL Server","Opbevarer Tips and Bruger information")
 
 
 Rel(mod, StudieTips, "Uses", "HTTP")

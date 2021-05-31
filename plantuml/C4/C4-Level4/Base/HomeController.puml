@@ -1,0 +1,8 @@
+@startuml
+hide empty fields
+hide empty methods
+frame HomeController{
+class HomeController {
+}
+}
+@enduml

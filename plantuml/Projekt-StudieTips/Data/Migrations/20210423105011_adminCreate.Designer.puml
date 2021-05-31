@@ -1,4 +1,0 @@
-@startuml
-class adminCreate <<partial>> {
-}
-@enduml

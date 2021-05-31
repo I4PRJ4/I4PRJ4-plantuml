@@ -1,0 +1,18 @@
+@startuml TipsController
+
+hide empty fields
+hide empty methods
+
+left footer "   C4 - Code Diagram - TipsController - StudieTips"
+
+frame TipsController{
+
+!include .\..\includes\Controllers\TipsController.puml
+!include .\..\includes\Models\Degree.puml
+!include .\..\includes\Models\Course.puml
+!include .\..\includes\Models\SearchDTo.puml
+!include .\..\includes\Models\Tip.puml
+!include .\..\includes\Repository\TipRepository.puml
+!include .\..\includes\Repository\ITipRepository.puml
+}
+@enduml

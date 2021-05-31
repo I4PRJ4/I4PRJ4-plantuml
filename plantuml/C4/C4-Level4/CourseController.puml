@@ -1,0 +1,21 @@
+@startuml CourseController
+
+hide empty fields
+hide empty methods
+
+left footer "   C4 - Code Diagram - CoursesController - StudieTips"
+
+frame CoursesController{
+
+!include .\..\includes\Controllers\CoursesController.puml
+!include .\..\includes\Models\Degree.puml
+!include .\..\includes\Models\Course.puml
+!include .\..\includes\Models\ViewModels\DegreeCourse.puml
+!include .\..\includes\Models\Tip.puml
+!include .\..\includes\Repository\CourseRepository.puml
+!include .\..\includes\Repository\ICourseRepository.puml
+!include .\..\includes\Repository\DegreeRepository.puml
+!include .\..\includes\Repository\IDegreeRepository.puml
+}
+
+@enduml

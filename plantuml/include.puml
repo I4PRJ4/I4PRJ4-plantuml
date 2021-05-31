@@ -5,32 +5,32 @@ hide empty methods
 
 left to right direction
 
-!include .\\Projekt-StudieTips\Data\DatabaseContext.puml
+!include .\C4\includes\Data\DatabaseContext.puml
 together InterfaceRepos {
-!include .\\Projekt-StudieTips\Repository\IDegreeRepository.puml
-!include .\\Projekt-StudieTips\Repository\ICourseRepository.puml
-!include .\\Projekt-StudieTips\Repository\ITipRepository.puml
+!include .\C4\includes\\Repository\IDegreeRepository.puml
+!include .\C4\includes\\Repository\ICourseRepository.puml
+!include .\C4\includes\\Repository\ITipRepository.puml
 }
 
-!include .\\Projekt-StudieTips\Models\ViewModels\DegreeCourse.puml
-!include .\\Projekt-StudieTips\Models\Tip.puml
-!include .\\Projekt-StudieTips\Models\Degree.puml
-!include .\\Projekt-StudieTips\Models\Course.puml
-!include .\\Projekt-StudieTips\Models\Tip.puml
-!include .\\Projekt-StudieTips\Models\SearchDto.puml
+!include .\C4\includes\\Models\ViewModels\DegreeCourse.puml
+!include .\C4\includes\\Models\Tip.puml
+!include .\C4\includes\\Models\Degree.puml
+!include .\C4\includes\\Models\Course.puml
+!include .\C4\includes\\Models\Tip.puml
+!include .\C4\includes\\Models\SearchDto.puml
 
 
 together Repos {
-!include .\\Projekt-StudieTips\Repository\CourseRepository.puml
-!include .\\Projekt-StudieTips\Repository\DegreeRepository.puml
-!include .\\Projekt-StudieTips\Repository\TipRepository.puml
+!include .\C4\includes\\Repository\CourseRepository.puml
+!include .\C4\includes\\Repository\DegreeRepository.puml
+!include .\C4\includes\\Repository\TipRepository.puml
 }
 together Controllers {
-!include .\\Projekt-StudieTips\Controllers\HomeController.puml
-!include .\\Projekt-StudieTips\Controllers\DegreesController.puml
-!include .\\Projekt-StudieTips\Controllers\CoursesController.puml
-!include .\\Projekt-StudieTips\Controllers\TipsController.puml
-!include .\\Projekt-StudieTips\Controllers\ModeratorController.puml
+!include .\C4\includes\\Controllers\HomeController.puml
+!include .\C4\includes\\Controllers\DegreesController.puml
+!include .\C4\includes\\Controllers\CoursesController.puml
+!include .\C4\includes\\Controllers\TipsController.puml
+!include .\C4\includes\\Controllers\ModeratorController.puml
 }
 
 

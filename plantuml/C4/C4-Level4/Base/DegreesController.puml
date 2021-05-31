@@ -1,0 +1,17 @@
+@startuml
+hide empty fields
+hide empty methods
+frame DegreesController{
+
+class DegreesController {
+}
+database DatabaseContext{
+
+}
+DegreeRepository <-- DegreesController
+Degree <-- DegreesController
+Degree --> Course
+Degree <-- Course
+DegreeRepository --> DatabaseContext
+}
+@enduml
