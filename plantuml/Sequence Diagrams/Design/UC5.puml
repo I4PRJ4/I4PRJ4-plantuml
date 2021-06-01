@@ -1,5 +1,6 @@
 @startuml
-title Use Case 5 - Fjern tip
+
+mainframe **Use Case 5 - Fjern tip**
 
 actor       Moderator       as mod
 control       TipsController       as tipscont
@@ -10,7 +11,7 @@ boundary       TipRepository       as tipsrepo
 database       DatabaseContext       as db
 
 
-mod -> tipscont: Delete(int)
+mod -> tipscont: http GET Delete(int)
 
 note left
 Første del af use casen
@@ -40,7 +41,7 @@ Deactivate tipsdelete
 tipscont --> mod: http response
 Deactivate tipscont
 
-mod -> tipscont: DeleteConfirmed(int)
+mod -> tipscont: http DELETE DeleteConfirmed(int)
 
 Activate tipscont
 tipscont -> tipsrepo: DeleteTip(int)
