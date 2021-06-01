@@ -1,6 +1,6 @@
 @startuml
 
-title Use Case 4 - Godkend/Afvis tip
+mainframe **Use Case 4 - Godkend/Afvis tip**
 
 actor       Moderator       as mod
 control       ModeratorController       as modcont
@@ -9,7 +9,7 @@ boundary       ModeratorViewIndex       as modindex
 boundary       TipRepository       as tipsrepo
 database       DatabaseContext       as db
 
-mod -> modcont: Index(string, int)
+mod -> modcont: http GET Index(string, int)
 
 Activate modcont
 modcont -> tipsrepo: GetUnmoderatedTips()
@@ -34,7 +34,7 @@ modcont --> mod: http response
 Deactivate modcont
 
 
-mod --> modcont: VerifyTip(int)
+mod --> modcont: http PUT VerifyTip(int)
 
 Activate modcont
 modcont -> tipsrepo: GetTip(int)
@@ -82,8 +82,5 @@ Deactivate modindex
 
 modcont --> mod: http response
 Deactivate modcont
-
-
-
 
 @enduml
