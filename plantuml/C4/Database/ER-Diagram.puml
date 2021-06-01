@@ -1,0 +1,45 @@
+@startuml ER-Diagram
+
+hide empty fields
+hide empty methods
+
+
+
+left footer "   Database - ER Diagram - StudieTips"
+
+frame ER_Diagram{
+Entity Tip {
+    + TipId PK: INT <<generated>>
+    --
+    + CourseId FK: INT <<generated>>
+    --
+    + Username : nvarchar(max)
+    + Date : datetime2(7)
+    + Headline : nvarchar(max)
+    + Text : nvarchar(max)
+    + IsVerified : bit <<default false>>
+}
+
+
+Entity Degree {
+    + DegreeId PK: INT <<generated>>
+    --
+    + DegreeName : nvarchar(450)
+}
+
+Entity Course {
+    + CourseId PK: INT <<generated>>
+    --
+    + DegreeId FK : INT <<generated>>
+    --
+    + CourseName : nvarchar(max)
+}
+
+
+Degree ||--|{ Course
+Tip  }|--||  Course
+
+}
+
+
+@enduml
