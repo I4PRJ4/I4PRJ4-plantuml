@@ -1,0 +1,74 @@
+@startuml
+title Use Case 1 - Tilføj tip
+
+actor       ":Studerende"       as stud
+control       ":TipsController"       as tipscont
+boundary       ":TipsViewCreate"       as tipscreate
+boundary       ":TipsViewIndex"       as tipsindex
+boundary       ":TipRepository"       as tipsrepo
+database       ":DatabaseContext"       as db
+
+
+stud -> tipscont: http GET Create(int)
+
+note left
+Første del af use casen
+er udeladt og kan ses
+i sekvensdiagrammet A1
+end note
+
+
+Activate tipscont
+tipscont -> tipscreate: UpdateView(int)
+
+Activate tipscreate
+tipscreate --> tipscont: View()
+Deactivate tipscreate
+
+tipscont --> stud: http response
+
+Deactivate tipscont
+
+stud -> tipscont: http POST Create(Tip)
+
+Activate tipscont
+tipscont -> tipsrepo: Add(Tip)
+
+Activate tipsrepo
+tipsrepo -> db: Add(Tip)
+
+Activate db
+db --> tipsrepo: OK
+Deactivate db
+
+tipsrepo ->> db: SaveChangesAsync()
+
+tipsrepo --> tipscont: OK
+Deactivate tipsrepo
+
+tipscont -> tipscont: RedirectToAction(string, object)
+tipscont -> tipsrepo: GetTips(int, string)
+
+Activate tipsrepo
+tipsrepo -> db: query
+
+Activate db
+db --> tipsrepo: IQueryable<Tip>
+Deactivate db
+
+tipsrepo --> tipscont: IQueryable<Tip>
+
+Deactivate tipsrepo
+
+tipscont -> tipsindex: UpdateView(List<Tip>)
+Activate tipsindex
+tipsindex --> tipscont: View()
+Deactivate tipsindex
+
+tipscont --> stud: http response
+Deactivate tipscont
+
+
+hide footbox
+
+@enduml
