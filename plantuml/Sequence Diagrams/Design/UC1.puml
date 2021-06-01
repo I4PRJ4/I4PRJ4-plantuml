@@ -1,6 +1,6 @@
 @startuml
-title Use Case 1 - Tilføj tip
 
+mainframe **sd** Use Case 1 - Tilføj tip
 actor       ":Studerende"       as stud
 control       ":TipsController"       as tipscont
 boundary       ":TipsViewCreate"       as tipscreate
@@ -14,7 +14,7 @@ stud -> tipscont: http GET Create(int)
 note left
 Første del af use casen
 er udeladt og kan ses
-i sekvensdiagrammet A1
+i det indledende sekvensdiagram
 end note
 
 
@@ -22,7 +22,7 @@ Activate tipscont
 tipscont -> tipscreate: UpdateView(int)
 
 Activate tipscreate
-tipscreate --> tipscont: View()
+tipscreate --> tipscont: DegreeView
 Deactivate tipscreate
 
 tipscont --> stud: http response
@@ -50,7 +50,7 @@ tipscont -> tipscont: RedirectToAction(string, object)
 tipscont -> tipsrepo: GetTips(int, string)
 
 Activate tipsrepo
-tipsrepo -> db: query
+tipsrepo -> db: LINQ Query
 
 Activate db
 db --> tipsrepo: IQueryable<Tip>

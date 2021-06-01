@@ -1,16 +1,14 @@
-@startuml
-title A1
+@startuml Indledende sekvens diagram
 
+mainframe **sd** Indledende Sekvens Diagram
 hide footbox
-
 actor       Studerende       as stud
-boundary       ":NavigationBarView"       as navbar
-boundary       ":DegreesView"       as degreesindex
+boundary       ":DegreesViewIndex"       as degreesindex
 control       ":DegreesController"       as degreescont
-boundary       ":CoursesView"       as coursesindex
+boundary       ":CoursesViewIndex"       as coursesindex
 control       ":CoursesController"       as coursescont
-boundary       ":TipsView"       as tipsindex
 control       ":TipsController"       as tipscont
+boundary       ":TipsViewIndex"       as tipsindex
 boundary       ":DegreeRepository"       as degreesrepo
 boundary       ":CourseRepository"       as coursesrepo
 boundary       ":TipsRepository"       as tipsrepo
@@ -18,33 +16,26 @@ database       ":DatabaseContext"       as db
 
 /'entity       TipsModel       as tipsmodel'/
 
-stud -> navbar: Trykker på uddannelser
 
-Activate navbar
-navbar -> degreescont: Action("Index", "Degrees")
-Deactivate navbar
+stud -> degreescont: http GET Index()
 
 Activate degreescont
 degreescont -> degreesrepo: GetDegrees()
 
 Activate degreesrepo
-degreesrepo -> db++: Degrees.ToList()
+degreesrepo -> db++: LINQ Query
 db --> degreesrepo--: List<Degree>
 degreesrepo --> degreescont: List<Degree>
 Deactivate degreesrepo
 
 degreescont -> degreesindex: View(List<Degree>)
 activate degreesindex
-degreesindex --> degreescont: Index()
+degreesindex --> degreescont: DegreeView
 deactivate degreesindex
-degreescont --> stud: Index
+degreescont --> stud: http Response
 Deactivate degreescont
 
-stud -> degreesindex: Trykker på ønsket studieretning
-
-Activate degreesindex
-degreesindex -> degreescont: Redirect(int, string)
-Deactivate degreesindex
+stud -> degreescont: http POST Redirect(int, string)
 
 Activate degreescont
 degreescont -> coursescont: Index(int)
@@ -55,19 +46,21 @@ coursescont -> coursesrepo: FindCourses(int)
 
 
 Activate coursesrepo
-coursesrepo -> db++: execute
-db --> coursesrepo--: results
-coursesrepo --> coursescont: results
+coursesrepo -> db++: LINQ Query
+db --> coursesrepo--: List<Course>
+coursesrepo --> coursescont: List<Course>
 Deactivate coursesrepo
 
-coursescont -> coursesindex: View('results')
+coursescont -> coursesindex: View(List<Course>)
+activate coursesindex
+coursesindex --> coursescont: CourseView
+deactivate coursesindex
+coursescont --> stud: http Response
 Deactivate coursescont
 
-stud -> coursesindex: Trykker på ønsket kursus
+Deactivate coursescont
 
-Activate coursesindex
-coursesindex -> coursescont: Redirect(int, string)
-Deactivate coursesindex
+stud -> coursescont: http POST Redirect(int, string)
 
 Activate coursescont
 coursescont -> tipscont: Index(int)
@@ -77,12 +70,17 @@ Activate tipscont
 tipscont -> tipsrepo: GetTips(int, string)
 
 Activate tipsrepo
-tipsrepo -> db++: execute
-db --> tipsrepo--: results
-tipsrepo --> tipscont: result
+tipsrepo -> db++ : LINQ Query
+db --> tipsrepo--: List<Tip>
+tipsrepo --> tipscont: List<Tip>
 Deactivate tipsrepo
+tipscont -> tipsindex: View(List<Tip>)
+activate tipsindex
+tipsindex --> tipscont: TipView
+deactivate tipsindex
+tipscont --> stud: http Response
+Deactivate tipscont
 
-tipscont -> tipsindex: View('results')
 Deactivate tipscont
 
 

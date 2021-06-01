@@ -1,13 +1,13 @@
 @startuml
 
 title Use Case 4 - Godkend/Afvis tip
-
-actor       Moderator       as mod
-control       ModeratorController       as modcont
-boundary       NavigationBarView       as navbar
-boundary       ModeratorViewIndex       as modindex
-boundary       TipRepository       as tipsrepo
-database       DatabaseContext       as db
+hide footbox
+actor       "Moderator"       as mod
+control       ":ModeratorController"       as modcont
+boundary       ":NavigationBarView"       as navbar
+boundary       ":ModeratorViewIndex"       as modindex
+boundary       ":TipRepository"       as tipsrepo
+database       ":DatabaseContext"       as db
 
 mod -> modcont: Index(string, int)
 
@@ -15,7 +15,7 @@ Activate modcont
 modcont -> tipsrepo: GetUnmoderatedTips()
 
 Activate tipsrepo
-tipsrepo -> db: query
+tipsrepo -> db: LINQ Query
 
 Activate db
 db --> tipsrepo: IQueryable<Tip>
@@ -40,7 +40,7 @@ Activate modcont
 modcont -> tipsrepo: GetTip(int)
 
 Activate tipsrepo
-tipsrepo -> db: query
+tipsrepo -> db: LINQ Query
 
 Activate db
 db --> tipsrepo: IQueryable<Tip>
@@ -65,7 +65,7 @@ Deactivate tipsrepo
 modcont -> tipsrepo: GetUnmoderatedTips()
 
 Activate tipsrepo
-tipsrepo -> db: query
+tipsrepo -> db: LINQ Query
 
 Activate db
 db --> tipsrepo: IQueryable<Tip>

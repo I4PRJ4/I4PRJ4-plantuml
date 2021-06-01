@@ -1,8 +1,8 @@
 @startuml
 title Use Case 2 - Læs tip
-
+hide footbox
 actor       Studerende       as stud
-boundary       TipsViewIndex       as tipsindex
+boundary       ":TipsViewIndex"       as tipsindex
 
 stud -> tipsindex: Trykker på ønsket tip for at læse mere
 

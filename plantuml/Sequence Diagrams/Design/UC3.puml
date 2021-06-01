@@ -2,11 +2,11 @@
 
 title Use Case 3 - Søg Tip
 
-actor       Studerende       as stud
-control       TipsController       as tipscont
-boundary       TipsViewSearchTip       as tipssearch
-boundary       TipRepository       as tipsrepo
-database       DatabaseContext       as db
+actor       "Studerende"       as stud
+control       ":TipsController"       as tipscont
+boundary       ":TipsViewSearchTip"       as tipssearch
+boundary       ":TipRepository"       as tipsrepo
+database       ":DatabaseContext"       as db
 
 
 stud -> tipscont: http POST SearchTip(SearchDto)
@@ -15,7 +15,7 @@ Activate tipscont
 tipscont -> tipsrepo: GetTipsWithinSearchTerm(SearchDto)
 
 Activate tipsrepo
-tipsrepo -> db: query 
+tipsrepo -> db: LINQ Query 
 
 Activate db
 db --> tipsrepo: IQueryable<Tip>

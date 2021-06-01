@@ -8,19 +8,30 @@ Container_Boundary(Views,"Views",""){
     Component(View1, "FrontPage View", "Component: ASP.NET Razor View")
     Component(View2, "DegreeList View", "Component: ASP.NET Razor View")
     Component(View3, "CourseList View", "Component: ASP.NET Razor View")
-    Component(View4, "TipsPageView", "Component: ASP.NET Razor View")
-    Component(View5, "Add Tip View", "Component: ASP.NET Razor View")
+    Component(View4, "TipList View", "Component: ASP.NET Razor View")
+    Component(View5, "Confirm Delete Tip View", "Component: ASP.NET Razor View")
+    Component(View6, "Add Tip View", "Component: ASP.NET Razor View")
     Component(View7, "NavBar view", "Component: ASP.NET Razor View", "Delvis side til genbrug på alle andre sider.")
-    
-    
 } 
 
-Lay_D(View1,View2)
-Lay_D(View3,View4)
+Lay_D(View1,View7)
+
+
+Lay_D(View2,View3)
+Lay_D(View4,View5)
+
+Lay_L(View2,View7)
+Lay_L(View3,View7)
+
+Lay_R(View4,View7)
+Lay_R(View5,View7)
+
+Lay_U(View6,View7)
 
 Rel_R(View1,View7,"Bruger")
 Rel_R(View2,View7,"Bruger")
 Rel_R(View3,View7,"Bruger")
 Rel_R(View4,View7,"Bruger")
-Rel_U(View5,View7,"Bruger")
+Rel_R(View5,View7,"Bruger")
+Rel_R(View6,View7,"Bruger")
 @enduml
