@@ -1,0 +1,87 @@
+@startuml Indledende sekvens diagram
+
+mainframe **sd** Indledende Sekvens Diagram
+hide footbox
+actor       Studerende       as stud
+boundary       ":DegreesViewIndex"       as degreesindex
+control       ":DegreesController"       as degreescont
+boundary       ":CoursesViewIndex"       as coursesindex
+control       ":CoursesController"       as coursescont
+control       ":TipsController"       as tipscont
+boundary       ":TipsViewIndex"       as tipsindex
+boundary       ":DegreeRepository"       as degreesrepo
+boundary       ":CourseRepository"       as coursesrepo
+boundary       ":TipsRepository"       as tipsrepo
+database       ":DatabaseContext"       as db
+
+/'entity       TipsModel       as tipsmodel'/
+
+
+stud -> degreescont: Få side med liste over uddannelser
+
+Activate degreescont
+degreescont -> degreesrepo: Find uddannelser
+
+Activate degreesrepo
+degreesrepo -> db++: Hent uddannelser fra database
+db --> degreesrepo--: returnér uddannelser
+degreesrepo --> degreescont: returnér uddannelser
+Deactivate degreesrepo
+
+degreescont -> degreesindex: fyld side med uddannelser
+activate degreesindex
+degreesindex --> degreescont: returnér side med uddannelser
+deactivate degreesindex
+degreescont --> stud: Send side til bruger
+Deactivate degreescont
+
+stud -> degreescont: Gå til side med liste over kurser
+
+Activate degreescont
+degreescont -> coursescont: Få side med liste over kurser
+Deactivate degreescont
+
+Activate coursescont
+coursescont -> coursesrepo: Find kurser
+
+
+Activate coursesrepo
+coursesrepo -> db++: Hent kurser fra databasen
+db --> coursesrepo--: returnér kurser
+coursesrepo --> coursescont: returnér kurser
+Deactivate coursesrepo
+
+coursescont -> coursesindex: fyld side med kurser
+activate coursesindex
+coursesindex --> coursescont: returnér side med kurser
+deactivate coursesindex
+coursescont --> stud: Send side til bruger
+Deactivate coursescont
+
+Deactivate coursescont
+
+stud -> coursescont: Gå til side med liste over tips
+
+Activate coursescont
+coursescont -> tipscont: Få side med liste over tips
+Deactivate coursescont
+
+Activate tipscont
+tipscont -> tipsrepo: Find tips
+
+Activate tipsrepo
+tipsrepo -> db++ : Hent tips fra databasen
+db --> tipsrepo--: returnér tips
+tipsrepo --> tipscont: returnér tips
+Deactivate tipsrepo
+tipscont -> tipsindex: fyld side med tips
+activate tipsindex
+tipsindex --> tipscont: returnér side med tips
+deactivate tipsindex
+tipscont --> stud: Send side til bruger
+Deactivate tipscont
+
+Deactivate tipscont
+
+
+@enduml
