@@ -9,7 +9,7 @@ boundary       ":TipRepository"       as tipsrepo
 database       ":DatabaseContext"       as db
 
 
-stud -> tipscont: http GET Create(int)
+stud -> tipscont: Trykker på "Tilføj tips"
 
 note left
 Første del af use casen
@@ -19,53 +19,52 @@ end note
 
 
 Activate tipscont
-tipscont -> tipscreate: UpdateView(int)
+tipscont -> tipscreate: Henter "Tilføj Tip"-side
 
 Activate tipscreate
-tipscreate --> tipscont: View()
+tipscreate --> tipscont: Returnerer "Tilføj tip"-side
 Deactivate tipscreate
 
-tipscont --> stud: http response
+tipscont --> stud: Viser "Tilføj Tip"-side
 
 Deactivate tipscont
 
-stud -> tipscont: http POST Create(Tip)
+stud -> tipscont: Indsender tip
 
 Activate tipscont
-tipscont -> tipsrepo: Add(Tip)
+tipscont -> tipsrepo: Tilføjer tip
 
 Activate tipsrepo
-tipsrepo -> db: Add(Tip)
+tipsrepo -> db: Tilføjer tip til database
 
 Activate db
 db --> tipsrepo: OK
 Deactivate db
 
-tipsrepo ->> db: SaveChangesAsync()
+tipsrepo ->> db: Gemmer ændringer
 
 tipsrepo --> tipscont: OK
 Deactivate tipsrepo
 
-tipscont -> tipscont: RedirectToAction(string, object)
-tipscont -> tipsrepo: GetTips(int, string)
+tipscont -> tipsrepo: Henter tips
 
 Activate tipsrepo
-tipsrepo -> db: query
+tipsrepo -> db: Henter tips
 
 Activate db
-db --> tipsrepo: IQueryable<Tip>
+db --> tipsrepo: Returnerer liste med tips
 Deactivate db
 
-tipsrepo --> tipscont: IQueryable<Tip>
+tipsrepo --> tipscont: Returnerer liste med tips
 
 Deactivate tipsrepo
 
-tipscont -> tipsindex: UpdateView(List<Tip>)
+tipscont -> tipsindex: Henter tipsside med liste af tips
 Activate tipsindex
-tipsindex --> tipscont: View()
+tipsindex --> tipscont: Returnerer tipsside
 Deactivate tipsindex
 
-tipscont --> stud: http response
+tipscont --> stud: Viser tipsside
 Deactivate tipscont
 
 
