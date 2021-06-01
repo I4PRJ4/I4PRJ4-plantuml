@@ -1,0 +1,89 @@
+@startuml
+title A1
+
+hide footbox
+
+actor       Studerende       as stud
+boundary       ":NavigationBarView"       as navbar
+boundary       ":DegreesView"       as degreesindex
+control       ":DegreesController"       as degreescont
+boundary       ":CoursesView"       as coursesindex
+control       ":CoursesController"       as coursescont
+boundary       ":TipsView"       as tipsindex
+control       ":TipsController"       as tipscont
+boundary       ":DegreeRepository"       as degreesrepo
+boundary       ":CourseRepository"       as coursesrepo
+boundary       ":TipsRepository"       as tipsrepo
+database       ":DatabaseContext"       as db
+
+/'entity       TipsModel       as tipsmodel'/
+
+stud -> navbar: Trykker på uddannelser
+
+Activate navbar
+navbar -> degreescont: Action("Index", "Degrees")
+Deactivate navbar
+
+Activate degreescont
+degreescont -> degreesrepo: GetDegrees()
+
+Activate degreesrepo
+degreesrepo -> db++: Degrees.ToList()
+db --> degreesrepo--: List<Degree>
+degreesrepo --> degreescont: List<Degree>
+Deactivate degreesrepo
+
+degreescont -> degreesindex: View(List<Degree>)
+activate degreesindex
+degreesindex --> degreescont: Index()
+deactivate degreesindex
+degreescont --> stud: Index
+Deactivate degreescont
+
+stud -> degreesindex: Trykker på ønsket studieretning
+
+Activate degreesindex
+degreesindex -> degreescont: Redirect(int, string)
+Deactivate degreesindex
+
+Activate degreescont
+degreescont -> coursescont: Index(int)
+Deactivate degreescont
+
+Activate coursescont
+coursescont -> coursesrepo: FindCourses(int)
+
+
+Activate coursesrepo
+coursesrepo -> db++: execute
+db --> coursesrepo--: results
+coursesrepo --> coursescont: results
+Deactivate coursesrepo
+
+coursescont -> coursesindex: View('results')
+Deactivate coursescont
+
+stud -> coursesindex: Trykker på ønsket kursus
+
+Activate coursesindex
+coursesindex -> coursescont: Redirect(int, string)
+Deactivate coursesindex
+
+Activate coursescont
+coursescont -> tipscont: Index(int)
+Deactivate coursescont
+
+Activate tipscont
+tipscont -> tipsrepo: GetTips(int, string)
+
+Activate tipsrepo
+tipsrepo -> db++: execute
+db --> tipsrepo--: results
+tipsrepo --> tipscont: result
+Deactivate tipsrepo
+
+tipscont -> tipsindex: View('results')
+Deactivate tipscont
+
+
+@enduml
