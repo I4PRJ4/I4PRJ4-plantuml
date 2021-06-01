@@ -1,6 +1,6 @@
 @startuml
 
-title Use Case 4 - Godkend/Afvis tip
+mainframe **Use Case 4 - Godkend/Afvis tip**
 
 actor       Moderator       as mod
 control       ModeratorController       as modcont
