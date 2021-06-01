@@ -1,5 +1,6 @@
 @startuml
-title Use Case 1 - Tilføj tip
+
+mainframe **Use Case 1 - Tilføj tip**
 
 actor       ":Studerende"       as stud
 control       ":TipsController"       as tipscont
