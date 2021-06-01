@@ -1,6 +1,6 @@
 @startuml
 
-mainframe **Use Case 3 - Søg tip**
+mainframe **sd** Use Case 3 - Søg tip
 
 actor       "Studerende"       as stud
 control       ":TipsController"       as tipscont

@@ -1,6 +1,6 @@
 @startuml
 
-mainframe **Use Case 5 - Fjern tip**
+mainframe **sd** Use Case 5 - Fjern tip
 
 actor       Moderator       as mod
 control       ":TipsController"       as tipscont

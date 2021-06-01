@@ -1,16 +1,6 @@
 @startuml
 
-<<<<<<< HEAD
-title Use Case 4 - Godkend/Afvis tip
-hide footbox
-actor       "Moderator"       as mod
-control       ":ModeratorController"       as modcont
-boundary       ":NavigationBarView"       as navbar
-boundary       ":ModeratorViewIndex"       as modindex
-boundary       ":TipRepository"       as tipsrepo
-database       ":DatabaseContext"       as db
-=======
-mainframe **Use Case 4 - Godkend/Afvis tip**
+mainframe **sd** Use Case 4 - Godkend/Afvis tip
 
 actor       Moderator       as mod
 control       ModeratorController       as modcont
@@ -18,7 +8,6 @@ boundary       NavigationBarView       as navbar
 boundary       ModeratorViewIndex       as modindex
 boundary       TipRepository       as tipsrepo
 database       DatabaseContext       as db
->>>>>>> afa04e0892b652d87d5f883300744840045cb0e2
 
 mod -> modcont: http GET Index(string, int)
 
