@@ -1,5 +1,6 @@
 @startuml
-title Use Case 5 - Fjern tip
+
+mainframe **Use Case 5 - Fjern tip**
 
 actor       Moderator       as mod
 control       TipsController       as tipscont
@@ -10,72 +11,73 @@ boundary       TipRepository       as tipsrepo
 database       DatabaseContext       as db
 
 
-mod -> tipscont: Delete(int)
+mod -> tipscont: Trykker på "Slet tip"
 
 note left
 Første del af use casen
 er udeladt og kan ses
-i sekvensdiagrammet A1
+i sekvensdiagrammet
+"Indledende sekvensdiagram"
 end note
 
 Activate tipscont
-tipscont -> tipsrepo: GetTipDetails(int)
+tipscont -> tipsrepo: Henter information om tippet
 
 Activate tipsrepo
-tipsrepo -> db: query
+tipsrepo -> db: Henter tip
 
 Activate db
-db --> tipsrepo: IQueryable<Tip>
+db --> tipsrepo: Returnerer tip
 Deactivate db
 
-tipsrepo --> tipscont: IQueryable<Tip>
+tipsrepo --> tipscont: Returnerer tip
 Deactivate tipsrepo
 
-tipscont -> tipsdelete: UpdateView(int)
+tipscont -> tipsdelete: Henter "Slet tip"-side
 
 Activate tipsdelete
-tipsdelete --> tipscont: View()
+tipsdelete --> tipscont: Returnerer "Slet tip"-side
 Deactivate tipsdelete
 
-tipscont --> mod: http response
+tipscont --> mod: Viser "Slet tip"-side
 Deactivate tipscont
 
-mod -> tipscont: DeleteConfirmed(int)
+mod -> tipscont: Trykker på slet
 
 Activate tipscont
-tipscont -> tipsrepo: DeleteTip(int)
+tipscont -> tipsrepo: Finder tip som skal slettes
 
 Activate tipsrepo
-tipsrepo -> db: Remove(Tip)
+tipsrepo -> db: Finder tip
 
 Activate db
 db --> tipsrepo: OK
 Deactivate db
 
-tipsrepo ->> db: SaveChangesAsync()
+tipsrepo ->> db: Gemmer ændringer
 
 tipsrepo --> tipscont: OK
 Deactivate tipsrepo
 
-tipscont -> tipsrepo: GetTips(int, string)
+tipscont -> tipsrepo: Henter alle tips
 
 Activate tipsrepo
-tipsrepo --> db: query
+tipsrepo --> db: Henter alle tips
 
 Activate db
-db --> tipsrepo: IQueryable<Tip>
+db --> tipsrepo: Returnerer tips
 Deactivate db
 
-tipsrepo --> tipscont: IQueryable<Tip>
+tipsrepo --> tipscont: Returnerer tips
 Deactivate tipsrepo
 
-tipscont -> tipsindex: UpdateView(List<Tip>)
+tipscont -> tipsindex: Henter tipsside
 
 Activate tipsindex
-tipsindex --> tipscont: View()
+tipsindex --> tipscont: Returnerer tipsside
 Deactivate tipsindex
 
-tipscont --> mod: http response
+tipscont --> mod: Viser tipsside
 Deactivate tipscont
 
 
