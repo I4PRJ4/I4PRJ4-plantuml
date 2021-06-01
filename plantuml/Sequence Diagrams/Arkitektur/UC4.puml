@@ -9,51 +9,51 @@ boundary       ModeratorViewIndex       as modindex
 boundary       TipRepository       as tipsrepo
 database       DatabaseContext       as db
 
-mod -> modcont: Index(string, int)
+mod -> modcont: Trykker på moderatorside
 
 Activate modcont
-modcont -> tipsrepo: GetUnmoderatedTips()
+modcont -> tipsrepo: Henter alle ikke-godkendte tips
 
 Activate tipsrepo
-tipsrepo -> db: query
+tipsrepo -> db: Henter ikke-godkendte tips
 
 Activate db
-db --> tipsrepo: IQueryable<Tip>
+db --> tipsrepo: Returnerer ikke-godkendte tips
 Deactivate db
 
-tipsrepo --> modcont: List<Tip>
+tipsrepo --> modcont: Returnerer tips
 Deactivate tipsrepo
 
-modcont -> modindex: UpdateView(List<Tip>)
+modcont -> modindex: Henter moderatorside
 
 Activate modindex
-modindex --> modcont: View()
+modindex --> modcont: Returnerer moderatorside
 Deactivate modindex
 
-modcont --> mod: http response
+modcont --> mod: Viser moderatorside
 Deactivate modcont
 
 
-mod --> modcont: VerifyTip(int)
+mod --> modcont: Godkender tip
 
 Activate modcont
-modcont -> tipsrepo: GetTip(int)
+modcont -> tipsrepo: Henter godkendte tip
 
 Activate tipsrepo
-tipsrepo -> db: query
+tipsrepo -> db: Henter godkendte tip
 
 Activate db
-db --> tipsrepo: IQueryable<Tip>
+db --> tipsrepo: Returnerer godkendte tip
 Deactivate db
 
-tipsrepo --> modcont: Tip
+tipsrepo --> modcont: Returnerer tip
 Deactivate tipsrepo
 
-modcont -> modcont :Tip.isVerified = true
-modcont -> tipsrepo: SaveChanges()
+modcont -> modcont : Sætter tip til godkendt
+modcont -> tipsrepo: Gemmer ændringer
 
 Activate tipsrepo
-tipsrepo -> db: SaveChanges()
+tipsrepo -> db: Gemmer ændringer i databasen
 
 Activate db
 db --> tipsrepo: OK
@@ -62,25 +62,25 @@ Deactivate db
 tipsrepo --> modcont: OK
 Deactivate tipsrepo
 
-modcont -> tipsrepo: GetUnmoderatedTips()
+modcont -> tipsrepo: Henter alle ikke-godkendte tips
 
 Activate tipsrepo
-tipsrepo -> db: query
+tipsrepo -> db: Henter ikke-godkendte tips
 
 Activate db
-db --> tipsrepo: IQueryable<Tip>
+db --> tipsrepo: Returnerer ikke-godkendte tips
 Deactivate db
 
-tipsrepo --> modcont: List<Tip>
+tipsrepo --> modcont: Returnerer tips
 Deactivate tipsrepo
 
-modcont -> modindex: UpdateView(List<Tip>)
+modcont -> modindex: Henter moderatorside
 
 Activate modindex
-modindex --> modcont: View()
+modindex --> modcont: Returnerer moderatorside
 Deactivate modindex
 
-modcont --> mod: http response
+modcont --> mod: Viser moderatorside
 Deactivate modcont
 
 
