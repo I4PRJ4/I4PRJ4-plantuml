@@ -1,5 +1,5 @@
 @startuml
-title Use Case 2 - Læs tip
+mainframe **sd** Use Case 2 - læs tip
 
 actor       Studerende       as stud
 boundary       TipsViewIndex       as tipsindex
